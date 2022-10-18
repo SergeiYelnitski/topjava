@@ -10,9 +10,28 @@
         .normal {
             color: green;
         }
-
         .excess {
             color: red;
+        }
+        .row dl {
+            background: none repeat scroll 0 0 #FAFAFA;
+            margin: 8px 0;
+            padding: 0;
+        }
+        .row dt {
+            display: inline-block;
+            margin-bottom: .5rem;
+            width: 170px;
+        }
+        .row dd {
+            display: inline-block;
+            margin-left: 0px;
+            vertical-align: top;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            width: 600px;
         }
     </style>
 </head>
@@ -20,7 +39,29 @@
 <section>
     <h3><a href="index.html">Home</a></h3>
     <hr/>
-    <h2>Meals</h2>
+    <h2>My Meals</h2>
+    <form method="get" action="meals">
+        <input type="hidden" name="action" value="filter">
+        <div class="row">
+            <dl>
+                <dt>From Date(inclusive)</dt>
+                <dd><input type="date" name="startDate" value="${param.startDate}" autocomplete="off"></dd>
+            </dl>
+            <dl>
+                <dt>To Date(inclusive)</dt>
+                <dd><input type="date" name="endDate" value="${param.endDate}"></dd>
+            </dl>
+            <dl>
+                <dt>From Time(inclusive)</dt>
+                <dd><input type="time" name="startTime" value="${param.startTime}"></dd>
+            </dl>
+            <dl>
+                <dt>To Time(exclusive)</dt>
+                <dd><input type="time" name="endTime" value="${param.endTime}"></dd>
+            </dl>
+        </div>
+        <button type="submit">Filter</button>
+    </form>
     <a href="meals?action=create">Add Meal</a>
     <br><br>
     <table border="1" cellpadding="8" cellspacing="0">
